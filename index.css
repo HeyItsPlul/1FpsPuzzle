@@ -258,3 +258,29 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 }
+
+.fire {
+    background-image: url("./Assets/Fire.png");
+    height: 40px;
+    width: 40px;
+
+}
+
+.sheep {
+    background-image: url("./Assets/Sheep.png");
+    height: 40px;
+    width: 40px;
+
+}
+
+.string {
+    background-image: url("./Assets/String.png");
+    height: 40px;
+    width: 40px;
+}
+
+.health {
+    background-image: url("./Assets/PlayerHealth.png");
+    height: 40px;
+    width: 40px;
+}

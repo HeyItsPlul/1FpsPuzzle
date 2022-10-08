@@ -16,7 +16,19 @@ const lvl1 = {  bush: [28],
                 flag: [145]
                 }
 
-const lvl2 = {}
+const lvl2 = {bush: [29, 31, 61],
+    wall: [1, 2, 3, 4, 5, 6, 7, 8 ,9, 10, 11, 12, 13, 26, 39, 52, 65, 78, 91, 104, 117, 130, 143, 156, 169, 168, 167, 166, 165, 164, 163, 162, 161, 160, 159, 158, 157, 156, 144, 131, 118, 105, 92, 79, 66, 53, 40, 27, 14, 41, 42, 43, 44, 45, 46, 47, 48, 49, 62, 75, 88, 114, 115, 116, 127, 140, 139, 138, 137, 136, 135, 122, 109, 108, 106, 96, 70, 57],
+    chest: [103],
+    doorUp: [],
+    doorDown: [],
+    doorLeft: [151],
+    doorRight: [101],
+    sheer: [123],
+    water: [83],
+    keyEnemy: [121],
+    flag: [155],
+    fire: [107],
+    sheep: [56]}
 
 function levelSelection() {
     lvlBtnsDiv.style.opacity = '1'
@@ -165,6 +177,24 @@ function mapRender(Lvl) {
     
         let door = document.getElementById(Lvl.flag[i])
         door.classList.add('flag')
+        door.classList.remove('cube')
+        
+        }
+
+    for (let i = 0; i < Lvl.fire.length; i++) {
+    
+        let door = document.getElementById(Lvl.fire[i])
+        door.classList.add('fire')
+        door.classList.add('collider')
+        door.classList.remove('cube')
+        
+        }
+
+    for (let i = 0; i < Lvl.sheep.length; i++) {
+    
+        let door = document.getElementById(Lvl.sheep[i])
+        door.classList.add('sheep')
+        door.classList.add('collider')
         door.classList.remove('cube')
         
         }

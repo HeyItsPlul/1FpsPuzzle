@@ -9,6 +9,10 @@ let toolEquipped = 0
 let keyCount = 0
 let playerHealth = 5
 let EnemyHealth = 10
+let stringCount = 0
+let bucketCount = 0
+let filledBucket = 0
+let fillbucketFunc;
 
 const stickCountDiv = document.getElementById('stickCount')
 const sheerCountDiv = document.getElementById('sheerCount')
@@ -17,7 +21,13 @@ const plankCountDivBtn = document.getElementById('plankCountBtn')
 const keyEnemyHealthNum = document.getElementById('keyEnemyHealth')
 const keyEnemyHealthDiv = document.getElementById('keyEnemyHealthDiv')
 const HealthDiv = document.getElementById('playerHealth')
+const emptyCountBtnDiv = document.getElementById('EmptyCountBtnDiv')
+const filledBucketDiv = document.getElementById('filledBucket')
+const stringCountDiv = document.getElementById('stringCount')
 
+function fillbtkfuncfunc() {
+    fillbtkfuncfunc
+}
 function plankCraft() {
 
     if (stickCount > 0 ) {
@@ -25,6 +35,18 @@ function plankCraft() {
         plankCount++
         stickCountDiv.innerText = stickCount
         plankCountDivBtn.innerText = plankCount
+    }
+}
+
+function bucketCraft() {
+    if (stickCount > 1 && stringCount > 0) {
+        stickCount--
+        stringCount--
+
+        bucketCount++
+        stickCountDiv.innerText = stickCount
+        emptyCountBtnDiv.innerText = bucketCount
+        stringCountDiv.innerText = stringCount
     }
 }
 
@@ -43,7 +65,7 @@ document.addEventListener('keyup', (e) => {
         movement(+1, 'playerRight', 'doorRight', 'doorRightOpen')
     }
     
-    if (e.key === "s" || e.code === "S" ) {
+    if (e.key === "s" || e.key === "S" ) {
         if (sheer == 1 && sheerCount > 0) {
             sheer = 0
             toolEquipped = 0
@@ -96,11 +118,28 @@ function movement(directionValue, playerDirection, doorDirecrion, doorDirectionO
             sheerCount++
             sheerCountDiv.innerText = sheerCount
         }
+        if (moveTo.classList.contains('string')) {
+            moveTo.classList.remove('string')
+
+            stringCount++
+            stringCountDiv.innerText = stringCount
+        }
+
         if (moveTo.classList.contains('flag')) {
             moveTo.classList.remove('flag')
 
             endScreen()
         }
+        function fillBkt() {
+            if (moveTo.classList.contains('water') || moveTo.classList.contains('waterBridge') && bucketCount > 0) {
+                bucketCount--
+                filledBucket++
+                emptyCountBtnDiv.innerText = bucketCount
+                filledBucketDiv.innerText = filledBucket
+            }
+        }
+
+        fillbucketFunc = fillBkt()
 
     } else {
         remove.classList.remove('playerLeft')
@@ -123,6 +162,20 @@ function movement(directionValue, playerDirection, doorDirecrion, doorDirectionO
 
             stickCount++
             stickCountDiv.innerText = stickCount
+        }
+        if (moveTo.classList.contains('string')) {
+            moveTo.classList.remove('string')
+
+            stringCountDiv++
+            stringCountDiv.innerText = stickCount
+        }
+
+        if (moveTo.classList.contains('fire') && filledBucket > 0) {
+            moveTo.classList.remove('fire')
+            moveTo.classList.remove('collider')
+
+            stringCountDiv++
+            stringCountDiv.innerText = stickCount
         }
         if (moveTo.classList.contains('bush') && sheer == 1 && remove.classList.contains(playerDirection)) {
             bushHitVal--
@@ -149,7 +202,7 @@ function movement(directionValue, playerDirection, doorDirecrion, doorDirectionO
             keyEnemyHealthDiv.style.opacity = '1'
             keyEnemyHealthNum.innerText = EnemyHealth
 
-            let enemyDamage = Math.floor(Math.random() * 3)
+            let enemyDamage = Math.floor(Math.random() * 5)
 
             if (enemyDamage == 2) {
                 playerHealth--
@@ -167,16 +220,58 @@ function movement(directionValue, playerDirection, doorDirecrion, doorDirectionO
                 moveTo.classList.remove('collider')
                 moveTo.classList.add('key')
                 keyEnemyHealthNum.innerText = 10
-                EnemyHealth = 10
+                EnemyHealth = 10 - 5
                 keyEnemyHealthDiv.style.opacity = '0'
             }
              
         }
+        if (moveTo.classList.contains('sheep') && sheer == 1 && remove.classList.contains(playerDirection)) {
+            EnemyHealth--
+
+            keyEnemyHealthDiv.style.opacity = '1'
+            keyEnemyHealthNum.innerText = EnemyHealth
+
+            let enemyDamage = Math.floor(Math.random() * 4)
+
+            if (enemyDamage == 2) {
+                playerHealth--
+                console.log(playerHealth)
+                HealthDiv.innerText = playerHealth
+
+            }
+
+            if (playerHealth <= 0) {
+                window.location.reload()
+            }
+
+            if (EnemyHealth <= 0) {
+                moveTo.classList.remove('sheep')
+                moveTo.classList.remove('collider')
+                moveTo.classList.add('string')
+                keyEnemyHealthNum.innerText = 10
+                EnemyHealth = 5
+                keyEnemyHealthDiv.style.opacity = '0'
+            }
+             
+        }
+        
     }
 
 
 }
 
+function bucketCraft() {
+    if (stringCount > 0 && stickCount > 1) {
+        stringCount--
+        stickCount--
+        stickCount--
+
+        bucketCount++
+        emptyCountBtnDiv.innerText = bucketCount
+        stringCountDiv.innerText = stringCount
+        stickCountDiv.innerText = stickCount
+    }
+}
 function endScreen() {
 
     document.body.innerText = `You Win!!`    
@@ -184,4 +279,6 @@ function endScreen() {
 
 document.getElementById('lvlBtnsDiv').style.opacity = '1'
 }
+
+
 
