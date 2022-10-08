@@ -1,0 +1,260 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: aliceblue;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.parent {
+    display: grid;
+    grid-template-columns: repeat(13, 1fr);
+    grid-template-rows: repeat(13, 1fr);
+    background-color: rgb(85, 35, 0);
+}
+
+.cube {
+    background-color: rgb(85, 35, 0);
+    height: 40px;
+    width: 40px;
+
+}
+
+.player {
+    background-image: url("./Assets/player.png");
+    height: 40px;
+    width: 40px;
+
+
+}
+
+.bush {
+    background-image: url("./Assets/Bush.png");
+    object-fit: scale-down;
+    height: 40px;
+    width: 40px;
+
+}
+
+.wall {
+    background: url("./Assets/Wall.png");
+    object-fit: scale-down;
+    height: 40px;
+    width: 40px;
+
+}
+
+.controls {
+    aspect-ratio: 7/2;
+    height: 100px;
+    margin: -30px;
+}
+
+.playerLeft {
+    background-image: url("./Assets/playerLeft.png");
+    height: 40px;
+    width: 40px;
+
+
+}
+
+.playerRight {
+    background-image: url("./Assets/playerRight.png");
+    height: 40px;
+    width: 40px;
+
+
+}
+
+.playerUp {
+    background-image: url("./Assets/playerUp.png");
+    height: 40px;
+    width: 40px;
+
+
+}
+
+.playerDown {
+    background-image: url("./Assets/playerDown.png");
+    height: 40px;
+    width: 40px;
+
+
+}
+
+.chest {
+    background-image: url("./Assets/Chest.png");
+    height: 40px;
+    width: 40px;
+
+}
+
+.key {
+    background-image: url("./Assets/key.png");
+    height: 40px;
+    width: 40px;
+
+}
+
+.KeyCount {
+    margin: 30px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+
+    font-size: 20px;
+    border:rgb(0, 223, 223) solid 10px ;
+    border-radius: 10px;
+    height: fit-content;
+    width:42px;
+    text-align: center;
+}
+
+.door {
+    height: 40px;
+    width: 40px;
+
+}
+
+.doorLeft {
+    background-image: url("./Assets/DoorLeft.png");
+    height: 40px;
+    width: 40px;
+
+}
+
+.doorRight {
+    background-image: url("./Assets/DoorRight.png");
+    height: 40px;
+    width: 40px;
+
+}
+
+.doorUp {
+    background-image: url("./Assets/DoorDown.png");
+    height: 40px;
+    width: 40px;
+
+}
+
+.doorDown {
+    background-image: url("./Assets/DoorUp.png");
+    height: 40px;
+    width: 40px;
+
+}
+
+.doorDownOpen {
+    background-image: url("./Assets/DoorOpenUp.png");
+    height: 40px;
+    width: 40px;
+
+}
+
+.doorUpOpen {
+    background-image: url("./Assets/DoorOpenDown.png");
+    height: 40px;
+    width: 40px;
+
+}
+
+.doorRightOpen {
+    background-image: url("./Assets/DoorOpenRight.png");
+    height: 40px;
+    width: 40px;
+
+}
+
+.doorLeftOpen {
+    background-image: url("./Assets/DoorOpenLeft.png");
+    height: 40px;
+    width: 40px;
+
+}
+
+.levelBtn {
+    height: 60px;
+    width: 60px;
+    font-size: 30px;
+    border: 5px solid rgb(0, 223, 223);
+    border-radius: 5px;
+    color: aliceblue;
+    background-color: rgba(0, 0, 0, 0);
+    padding: 0%;
+}
+
+.lvlBtnsDiv {
+    opacity: 0%;
+    height: 0%;
+    width: 0%;
+}
+
+.startBtn {
+    background-image: url("./Assets/Logo.png");
+    background-size: cover;
+    height: 202px;
+    width: 799px;
+    cursor: pointer;
+}
+
+.stick {
+    background-image: url("./Assets/Stick.png");
+    height: 40px;
+    width: 40px;
+}
+
+.sheer {
+    background-image: url("./Assets/sheer.png");
+    height: 40px;
+    width: 40px;
+}
+
+.water {
+    background-image: url("./Assets/Water.png");
+    height: 40px;
+    width: 40px;
+}
+
+.convertBtn {
+    height: 30px;
+    width: 30px;
+    border: none;
+    background-color: rgb(27, 27, 27);
+}
+
+.plankCountBtn {
+    height: 30px;
+    width: 100%;
+    background-color: rgb(0, 78, 0);
+    border-radius: 5px;
+    color: aliceblue;
+    font-size: 20px;
+}
+
+.waterBridge {
+    background-image: url("./Assets/WaterBridge.png");
+    height: 40px;
+    width: 40px;
+}
+
+.keyEnemy {
+    background-image: url("./Assets/KeyEnemy.png");
+    height: 40px;
+    width: 40px;
+}
+
+#keyEnemyHealthDiv {
+    opacity: 0;
+}
+
+.flag {
+    background-image: url("./Assets/FlagPole.png");
+    height: 40px;
+    width: 40px;
+}
+
+.controlsDiv {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
