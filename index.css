@@ -284,3 +284,21 @@ body {
     height: 40px;
     width: 40px;
 }
+
+.target {
+    background-image: url("./Assets/Target.png");
+    height: 40px;
+    width: 40px;
+}   
+
+.safe {
+    background-image: url("./Assets/Safe.png");
+    height: 40px;
+    width: 40px;
+}
+
+.lock {
+    background-image: url("./Assets/Lock.png");
+    height: 40px;
+    width: 40px;
+}   

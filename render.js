@@ -34,15 +34,33 @@ const lvl3 = {bush: [35, 77, 155, 154, 71],
     wall: [136, 57, 70, 134, 1, 2, 3, 4, 5, 6, 7, 8 ,9, 10, 11, 12, 13, 26, 39, 52, 65, 78, 91, 104, 117, 130, 143, 156, 169, 168, 167, 166, 165, 164, 163, 162, 161, 160, 159, 158, 157, 156, 144, 131, 118, 105, 92, 79, 66, 53, 40, 27, 14, 28, 29, 30, 43, 44, 45, 46, 47, 48,49, 62, 75, 36, 33, 101, 114, 115, 116, 127, 153, 100, 99, 97, 96, 95, 109, 108, 93, 119, 120, 121, 123],
     chest: [31,  103, 61, 42],
     doorUp: [],
-    doorDown: [98],
+    doorDown: [98, 94],
     doorLeft: [20],
-    doorRight: [88, 83, 149],
+    doorRight: [88, 83],
     sheer: [32],
     water: [23, 140],
     keyEnemy: [113],
     flag: [145],
-    fire: [94],
-    sheep: [34, 106]}
+    fire: [149],
+    sheep: [34, 106],
+    target: [147]}
+
+const lvl4 = {bush: [16, 33, 23, 142, 116, 115, 107],
+    wall: [111, 95, 96, 109, 122, 71, 103, 102, 74, 87, 98, 99, 100, 128, 129, 141, 124, 125, 126, 134, 135, 137, 136, 120, 133, 68, 81, 55, 63, 62, 61, 60, 59, 58, 56, 43, 17, 30, 1, 2, 3, 4, 5, 6, 7, 8 ,9, 10, 11, 12, 13, 26, 39, 52, 65, 78, 91, 104, 117, 130, 143, 156, 169, 168, 167, 166, 165, 164, 163, 162, 161, 160, 159, 158, 157, 156, 144, 131, 118, 105, 92, 79, 66, 53, 14, 27, 40],
+    chest: [29, 94, 90, 73],
+    doorUp: [64],
+    doorDown: [54, 97],
+    doorLeft: [147, 154],
+    doorRight: [],
+    sheer: [67],
+    water: [80, 150],
+    keyEnemy: [132],
+    flag: [123],
+    fire: [127, 84],
+    sheep: [112, 42, 48],
+    target: [108, 110],
+    lock: [121],
+    safe: [101, 57]}
 
 function levelSelection() {
     lvlBtnsDiv.style.opacity = '1'
@@ -208,6 +226,31 @@ function mapRender(Lvl) {
     
         let door = document.getElementById(Lvl.sheep[i])
         door.classList.add('sheep')
+        door.classList.add('collider')
+        door.classList.remove('cube')
+        
+        }
+
+    for (let i = 0; i < Lvl.target.length; i++) {
+    
+        let door = document.getElementById(Lvl.target[i])
+        door.classList.add('target')
+        door.classList.add('collider')
+        door.classList.remove('cube')
+        
+        }
+    for (let i = 0; i < Lvl.lock.length; i++) {
+    
+        let door = document.getElementById(Lvl.lock[i])
+        door.classList.add('lock')
+        door.classList.remove('cube')
+        
+        }
+
+    for (let i = 0; i < Lvl.safe.length; i++) {
+    
+        let door = document.getElementById(Lvl.safe[i])
+        door.classList.add('safe')
         door.classList.add('collider')
         door.classList.remove('cube')
         

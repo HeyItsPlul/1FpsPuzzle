@@ -14,6 +14,7 @@
         <button onclick="render(lvl1)" class="levelBtn" id="levelBtn">1</button>
         <button onclick="render(lvl2)" class="levelBtn" id="levelBtn">2</button>
         <button onclick="render(lvl3)" class="levelBtn" id="levelBtn">3</button>
+        <button onclick="render(lvl4)" class="levelBtn" id="levelBtn">4</button>
     </div>
     
     
@@ -25,10 +26,20 @@
         <div class="KeyCount"><img src="./Assets/Key.png" alt="" class="key"> <span id="keyCount">0</span></div>
         <div class="KeyCount" id="sheerCountDiv"><img src="./Assets/sheer.png" alt="" class="key"> <span id="sheerCount">0</span></div>
         <div class="KeyCount"><img src="./Assets/Stick.png" alt="" class="key"> <span id="stickCount">0</span></div>
+        <div class="KeyCount"><img src="./Assets/Lock.png" alt="" class="key"> <span id="lockCount">0</span></div>
         <div class="KeyCount"><img src="./Assets/Plank.png" alt="" class="key"><button class="plankCountBtn" id="plankCountBtn" onclick="plankCraft()">0</button></div>
+        <div class="KeyCount" id="bowCountDiv"><img src="./Assets/Bow.png" alt="" class="key"><button class="plankCountBtn" id="bowCount" onclick="bowCraft()">0</button></div>
         <div class="KeyCount" id="HealthDiv"><img src="./Assets/PlayerHealth.png" alt="" class="key"> <span id="playerHealth">5</span></div>
         <div class="KeyCount" id="HealthDiv"><img src="./Assets/String.png" alt="" class="key"> <span id="stringCount">0</span></div>
-        <div class="KeyCount"><img src="./Assets/BucketEmpty.png" alt="" class="key"><button class="plankCountBtn" id="EmptyCountBtnDiv" onclick="bucketCraft()">0</button></div>
+        <div class="KeyCount"><img src="./Assets/BucketEmpty.png" alt="" class="key"><button class="plankCountBtn" id="EmptyCountBtnDiv" onclick="    if (stickCount > 0 && stringCount > 0) {
+            stickCount--
+            stringCount--
+    
+            bucketCount++
+            stickCountDiv.innerText = stickCount
+            emptyCountBtnDiv.innerText = bucketCount
+            stringCountDiv.innerText = stringCount
+        }">0</button></div>
         <div class="KeyCount"><img src="./Assets/BucketFilled.png" alt="" class="key"><button class="plankCountBtn" id="filledBucket" onclick="fillbtkfuncfunc()">0</button></div>
         <div class="KeyCount" id="keyEnemyHealthDiv"><img src="./Assets/EnemyHealth.png" alt="" class="key"> <span id="keyEnemyHealth">10</span></div>
     </div>

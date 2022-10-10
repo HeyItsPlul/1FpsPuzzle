@@ -13,6 +13,9 @@ let stringCount = 0
 let bucketCount = 0
 let filledBucket = 0
 let fillbucketFunc;
+let bow = 0
+let bowCount = 0
+let lockCount = 0
 
 const stickCountDiv = document.getElementById('stickCount')
 const sheerCountDiv = document.getElementById('sheerCount')
@@ -24,9 +27,21 @@ const HealthDiv = document.getElementById('playerHealth')
 const emptyCountBtnDiv = document.getElementById('EmptyCountBtnDiv')
 const filledBucketDiv = document.getElementById('filledBucket')
 const stringCountDiv = document.getElementById('stringCount')
+const lockCountDiv = document.getElementById('lockCount')
 
 function fillbtkfuncfunc() {
     fillbtkfuncfunc
+}
+
+function bowCraft() {
+    if (plankCount > 1 && stringCount > 0) {
+        plankCount -= 2
+        stringCount--
+        plankCountDivBtn.innerText = plankCount
+        stringCountDiv.innerText = stringCount
+        bowCount++
+        document.getElementById('bowCount').innerText = bowCount
+    }
 }
 function plankCraft() {
 
@@ -39,7 +54,7 @@ function plankCraft() {
 }
 
 function bucketCraft() {
-    if (stickCount > 1 && stringCount > 0) {
+    if (stickCount > 0 && stringCount > 0) {
         stickCount--
         stringCount--
 
@@ -66,14 +81,26 @@ document.addEventListener('keyup', (e) => {
     }
     
     if (e.key === "s" || e.key === "S" ) {
-        if (sheer == 1 && sheerCount > 0) {
+        if (sheer == 1 && sheerCount > 0 && toolEquipped == 1) {
             sheer = 0
             toolEquipped = 0
             document.getElementById('sheerCountDiv').style.borderColor = 'rgb(0, 223, 223) '
-        } else if (sheerCount > 0) {
+        } else if (sheerCount > 0 && toolEquipped != 1) {
             sheer = 1
             toolEquipped = 1
             document.getElementById('sheerCountDiv').style.borderColor = 'green'
+        }
+    }
+
+    if (e.key === "b" || e.key === "B" ) {
+        if (bow == 1 && bowCount >= 0 && toolEquipped == 1) {
+            bow = 0
+            toolEquipped = 0
+            document.getElementById('bowCountDiv').style.borderColor = 'rgb(0, 223, 223) '
+        } else if (bowCount >= 0 && toolEquipped != 1) {
+            bow = 1
+            toolEquipped = 1
+            document.getElementById('bowCountDiv').style.borderColor = 'green'
         }
     }
 
@@ -130,6 +157,25 @@ function movement(directionValue, playerDirection, doorDirecrion, doorDirectionO
 
             endScreen()
         }
+
+        if (moveTo.classList.contains('lock')) {
+            moveTo.classList.remove('lock')
+
+            lockCount += 2
+            lockCountDiv.innerText = lockCount
+        }
+
+        if (moveTo.classList.contains('key')) {
+            moveTo.classList.remove('key')
+
+            keyCount += 1
+            keyCountDiv.innerText = keyCount
+        }
+
+        let targetValue = document.getElementById(playerID + directionValue + directionValue)
+
+
+
         function fillBkt() {
             if (moveTo.classList.contains('water') || moveTo.classList.contains('waterBridge') && bucketCount > 0) {
                 bucketCount--
@@ -173,9 +219,12 @@ function movement(directionValue, playerDirection, doorDirecrion, doorDirectionO
         if (moveTo.classList.contains('fire') && filledBucket > 0) {
             moveTo.classList.remove('fire')
             moveTo.classList.remove('collider')
-
-            stringCountDiv++
-            stringCountDiv.innerText = stickCount
+        }
+        if (moveTo.classList.contains('target') && bowCount > 0 && bow == 1 ) {
+            moveTo.classList.remove('collider')
+            moveTo.classList.remove('target')
+            bowCount--
+            document.getElementById('bowCount').innerText = bowCount
         }
         if (moveTo.classList.contains('bush') && sheer == 1 && remove.classList.contains(playerDirection)) {
             bushHitVal--
@@ -196,13 +245,19 @@ function movement(directionValue, playerDirection, doorDirecrion, doorDirectionO
             plankCount--
             plankCountDivBtn.innerText = plankCount
         }
+        if (moveTo.classList.contains('safe') && lockCount > 0) {
+            lockCount--
+            moveTo.classList.remove('collider')
+            moveTo.classList.remove('safe')
+            lockCountDiv.innerText = lockCount
+        }
         if (moveTo.classList.contains('keyEnemy') && sheer == 1 && remove.classList.contains(playerDirection)) {
             EnemyHealth--
 
             keyEnemyHealthDiv.style.opacity = '1'
             keyEnemyHealthNum.innerText = EnemyHealth
 
-            let enemyDamage = Math.floor(Math.random() * 5)
+            let enemyDamage = Math.floor(Math.random() * 7)
 
             if (enemyDamage == 2) {
                 playerHealth--
@@ -231,7 +286,7 @@ function movement(directionValue, playerDirection, doorDirecrion, doorDirectionO
             keyEnemyHealthDiv.style.opacity = '1'
             keyEnemyHealthNum.innerText = EnemyHealth
 
-            let enemyDamage = Math.floor(Math.random() * 4)
+            let enemyDamage = Math.floor(Math.random() * 8)
 
             if (enemyDamage == 2) {
                 playerHealth--
